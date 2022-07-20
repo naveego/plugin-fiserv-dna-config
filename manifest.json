@@ -1,0 +1,92 @@
+{
+  "id": "plugin-oracle-net-config",
+  "displayName": "Oracle .NET Config",
+  "description": "Publisher which connects to Oracle using .NET Framework",
+  "apiVersion": "2",
+  "versionDescription": "Version 1",
+  "version": "1.0.1-beta",
+  "iconFile": "icon.png",
+  "executable": "PluginOracleNetConfig",
+  "kind": "publisher",
+  "os": "$GOOS",
+  "arch": "$GOARCH",
+  "accessGroups": [],
+  "canConfigure": true,
+  "canProduceMultipleSchemas": true,
+  "canAcceptQueryBasedSchemas": false,
+  "canUseOAuth": false,
+  "canConfigureWrite": false,
+  "canWrite": false,
+  "canConfigureReplication": false,
+  "canWriteReplication": false,
+  "querySchema": {
+    "ui": {
+      "ui:widget": "code",
+      "ui:readonly": true,
+      "ui:options": {
+        "language": "sql"
+      }
+    },
+    "schema": {
+      "type": "string"
+    }
+  },
+  "configSchema": {
+    "ui": {
+      "ui:order": [
+        "Hostname",
+        "Port",
+        "ServiceName",
+        "Username",
+        "Password",
+        "ConfigSchemaFilePath"
+      ],
+      "Password": {
+        "ui:widget": "password"
+      }
+    },
+    "schema": {
+      "type": "object",
+      "description": "Custom query discovery, outputs, and replications are disabled on the configuration version of the Oracle plugin.",
+      "properties": {
+        "Hostname": {
+          "type": "string",
+          "title": "Hostname",
+          "description": "The hostname of the Oracle Server"
+        },
+        "Port": {
+          "type": "string",
+          "title": "Port",
+          "description": "The port of the Oracle Server"
+        },
+        "Username": {
+          "type": "string",
+          "title": "Username",
+          "description": "The username to use for authentication"
+        },
+        "Password": {
+          "type": "string",
+          "title": "Password",
+          "description": "The password to use for authentication"
+        },
+        "ServiceName": {
+          "type": "string",
+          "title": "Service Name",
+          "description": "The service name within the Oracle Server"
+        },
+        "ConfigSchemaFilePath": {
+          "type": "string",
+          "title": "Config Schema File Path",
+          "description": "The path to the configuration schema file on local computer"
+        }
+      },
+      "required": [
+        "Hostname",
+        "Username",
+        "Password",
+        "ServiceName",
+        "ConfigSchemaFilePath"
+      ]
+    }
+  }
+}
